@@ -4,6 +4,7 @@
 .env
 .env.*
 !/.env.example
+bbdd/conexion.php
 bbdd/conexion.local.php
 
 # Runtime logs
@@ -26,4 +27,3 @@ pipeline*.html
 Default.html
 default.php
 index2.html
-
