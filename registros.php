@@ -171,7 +171,7 @@ $Usuario = $_SESSION['usuario'];
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/registros.js"></script>
+  <script src="assets/js/registros.js?v=20260507-2"></script>
 </body>
 
 </html>
