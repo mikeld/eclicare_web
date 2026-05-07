@@ -1,3 +1,5 @@
+const MEDIA_FALLBACK = 'assets/img/no-image.svg';
+
 $(document).ready(function() {
   loadPhotoResults();
   setupImageModal();
@@ -100,7 +102,7 @@ function displayPhotoResults(results) {
       <div class="col-xl-4 col-md-6">
         <article class="result-card">
           <div class="image-container" onclick="openImageModal('${imagePath}')">
-            <img src="${imagePath}" alt="Analisis ${escapeAttribute(result.id)}" class="result-image" onerror="this.src='assets/img/no-image.png'">
+            <img src="${imagePath}" alt="Analisis ${escapeAttribute(result.id)}" class="result-image" onerror="this.onerror=null;this.src='${MEDIA_FALLBACK}'">
             <div class="zoom-indicator"><i class="bx bx-zoom-in"></i> Ampliar</div>
           </div>
           <div class="result-info">
@@ -162,7 +164,7 @@ function displayVideoResults(results) {
 function displayTimelapseResults(results) {
   const html = results.map(function(result) {
     const imagePaths = Array.isArray(result.image_paths) ? result.image_paths : [];
-    const firstImage = imagePaths.length > 0 ? `img/${escapeAttribute(imagePaths[0])}` : 'assets/img/no-image.png';
+    const firstImage = imagePaths.length > 0 ? `img/${escapeAttribute(imagePaths[0])}` : MEDIA_FALLBACK;
     const modalPayload = escapeAttribute(JSON.stringify(imagePaths));
     const formattedDate = formatDate(result.date);
     const shortId = String(result.id || '').slice(-8);
@@ -171,7 +173,7 @@ function displayTimelapseResults(results) {
       <div class="col-xl-4 col-md-6">
         <article class="result-card">
           <div class="image-container" onclick="openTimelapseModal('${escapeAttribute(result.id)}', '${modalPayload}')">
-            <img src="${firstImage}" alt="Time-lapse ${escapeAttribute(result.id)}" class="result-image" onerror="this.src='assets/img/no-image.png'">
+            <img src="${firstImage}" alt="Time-lapse ${escapeAttribute(result.id)}" class="result-image" onerror="this.onerror=null;this.src='${MEDIA_FALLBACK}'">
             <div class="zoom-indicator"><i class="bx bx-images"></i> Secuencia</div>
             <div class="timelapse-badge"><i class="bx bx-movie"></i> ${escapeHtml(result.num_frames || imagePaths.length)} frames</div>
           </div>
@@ -262,7 +264,7 @@ function setupImageModal() {
   });
 
   modalImg.on('error', function() {
-    modalImg.attr('src', 'assets/img/no-image.png');
+    modalImg.attr('src', MEDIA_FALLBACK);
   });
 }
 
