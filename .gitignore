@@ -1,0 +1,29 @@
+.DS_Store
+
+# Local/private configuration
+.env
+.env.*
+!/.env.example
+bbdd/conexion.local.php
+
+# Runtime logs
+php_errorlog
+*/php_errorlog
+*.log
+
+# Generated uploads and analysis media
+img/*
+!img/.gitkeep
+ws/uploads/*
+!ws/uploads/.gitkeep
+
+# Android binaries and released packages
+*.apk
+versiones/
+
+# Legacy/demo documents that include credentials or generated presentation exports
+pipeline*.html
+Default.html
+default.php
+index2.html
+
